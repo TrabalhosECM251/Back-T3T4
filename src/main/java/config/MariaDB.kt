@@ -8,5 +8,5 @@ object MariaDB {
     const val user = ""
     const val password = ""
     const val host = ""
-    const val port = ""
+    const val port = "afw"
 }
