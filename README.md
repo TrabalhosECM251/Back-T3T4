@@ -19,6 +19,7 @@ JDK: openjdk-16 versão 16.0.2
                 |-main.kt : Inicializa a aplicação
 
 ### Ordem de desenvolvimento
+#### ANTES: Criar arquivo MariaDB.kt em src/main/java/config com o template de MariaDB.kt.template
 1. Criar método na interface de repositório (IRepo.kt)
 2. Implementar o método nos DBs
 3. Criar usecase (UCExemplo.kt)
