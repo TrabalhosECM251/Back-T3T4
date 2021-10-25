@@ -1,6 +1,6 @@
-package dao
+package main.java.interfaces
 
-interface GenericDAO{
+interface IDAO{
     fun getOne(id:Int): Any
     fun getAll(): List<Any>
     fun insertOne(objeto: Any)

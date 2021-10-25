@@ -1,6 +1,8 @@
-package dao
+package main.java.repositories.mariadb
 
-class ReviewDAO : GenericDAO {
+import main.java.interfaces.IDAO
+
+class ReviewDAO : IDAO {
     override fun getOne(id: Int): Any {
         TODO("Not yet implemented")
     }
