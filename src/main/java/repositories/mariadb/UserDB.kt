@@ -1,8 +1,12 @@
 package main.java.repositories.mariadb
 
-import main.java.interfaces.IDAO
+import main.java.interfaces.IRepo
 
-class UserDAO : IDAO {
+/*
+    Classe responsável por declarar métodos de manipulação do DB de User
+ */
+
+class UserDB : IRepo {
     override fun getOne(id: Int): Any {
         TODO("Not yet implemented")
     }

@@ -6,6 +6,7 @@ import config.MariaDB
 /*
     Classe responsável pela conexão com o banco de dados MariaDB
  */
+
 class MariaDB {
     var connection : Connection? = null
     var statement : Statement? = null

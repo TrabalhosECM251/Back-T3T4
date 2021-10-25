@@ -5,6 +5,11 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import config.Ktor
 
+
+/*
+    Classe responsável pela inicialização do servidor
+*/
+
 class Init {
     fun start() {
         embeddedServer(Netty, port = Ktor.port, host = Ktor.host) {

@@ -1,8 +1,12 @@
 package main.java.repositories.mariadb
 
-import main.java.interfaces.IDAO
+import main.java.interfaces.IRepo
 
-class ReviewDAO : IDAO {
+/*
+    Classe responsável por declarar métodos de manipulação do DB de Reviews
+ */
+
+class ReviewDB : IRepo {
     override fun getOne(id: Int): Any {
         TODO("Not yet implemented")
     }
