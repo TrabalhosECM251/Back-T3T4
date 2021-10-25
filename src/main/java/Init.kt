@@ -1,19 +1,13 @@
-package controllers.ktor
-
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import config.Ktor
 
-object Ktor {
-    val protocol = "http"
-    val host = "localhost"
-    val port = 8080
-
+class Init {
     fun start() {
-        println("OI")
-        embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
+        embeddedServer(Netty, port = Ktor.port, host = Ktor.host) {
             routing {
                 get("/") {
                     call.respondText("Vambora")
@@ -21,8 +15,4 @@ object Ktor {
             }
         }.start(wait = true)
     }
-
 }
-
-
-
