@@ -1,7 +1,5 @@
 package main.java.interfaces
 
-import models.Film
-
 /*
     Interface de métodos que devem ser implementados por um repositório
  */
