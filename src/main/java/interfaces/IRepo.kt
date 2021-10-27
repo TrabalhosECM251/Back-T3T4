@@ -1,5 +1,7 @@
 package main.java.interfaces
 
+import models.Film
+
 /*
     Interface de métodos que devem ser implementados por um repositório
  */
@@ -9,6 +11,6 @@ interface IRepo{
     fun getAll(): List<Any>
     fun insertOne(objeto: Any)
     fun insertMult(lista: List<Any>)
-    fun update(objeto: Any)
+    fun update(id: Int, newObject: Any)
     fun delete(id: Int)
 }
