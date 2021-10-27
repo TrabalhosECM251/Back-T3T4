@@ -1,7 +1,11 @@
 package config
 
+/*
+    Arquivo de configurações utilizadas pelo Ktor
+ */
+
 object Ktor {
-    val protocol = "http"
-    val host = "localhost"
-    val port = 8080
+    const val protocol = "http"
+    const val host = "localhost"
+    const val port = 8080
 }

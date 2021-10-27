@@ -25,3 +25,7 @@ hs_err_pid*
 # IDEs
 .idea/
 .vscode/
+
+# CFG
+/src/main/java/config/MariaDB.kt
+/target/classes/META-INF/TLinguagens.kotlin_module

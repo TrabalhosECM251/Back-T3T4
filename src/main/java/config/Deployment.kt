@@ -1,7 +1,11 @@
 package config
 
+/*
+    Arquivo de configurações usadas pelo deployment
+ */
+
 object Deployment {
-    var deploymentType = "dev"
-    var repoType = "mariadb"
-    var controllerType = "ktor"
+    const val deploymentType = "dev"
+    const val repoType = "mariadb"
+    const val controllerType = "ktor"
 }
