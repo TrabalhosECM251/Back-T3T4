@@ -8,4 +8,4 @@ package models
         password: string - senha do usuário
  */
 
-data class User(val name: String, val email: String, val password: String)
+data class User(val id: Int? = null, val name: String, val email: String, val password: String)
