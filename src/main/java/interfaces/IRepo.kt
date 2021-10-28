@@ -9,6 +9,6 @@ interface IRepo{
     fun getAll(): List<Any>
     fun insertOne(objeto: Any)
     fun insertMult(lista: List<Any>)
-    fun update(objeto: Any)
+    fun update(id: Int, newObject: Any)
     fun delete(id: Int)
 }

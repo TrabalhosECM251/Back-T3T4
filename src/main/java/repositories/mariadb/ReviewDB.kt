@@ -23,7 +23,7 @@ class ReviewDB : IRepo {
         TODO("Not yet implemented")
     }
 
-    override fun update(objeto: Any) {
+    override fun update(id: Int, newObject: Any) {
         TODO("Not yet implemented")
     }
 

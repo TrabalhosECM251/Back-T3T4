@@ -6,7 +6,7 @@ import main.java.interfaces.IRepo
     Classe responsável por declarar métodos de manipulação do DB de User
  */
 
-class UserDB : IRepo {
+class FilmDB : IRepo {
     override fun getOne(id: Int): Any {
         TODO("Not yet implemented")
     }
