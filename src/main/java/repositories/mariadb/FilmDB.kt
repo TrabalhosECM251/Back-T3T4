@@ -10,9 +10,9 @@ import repositories.mariadb.MariaDB
 
 class FilmDB : IRepo {
     override fun getOne(id: Int): Any {
-        try {
-            var film : Film? = null
+        var film : Film? = null
 
+        try {
             val connection = MariaDB();
 
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes WHERE id = ${id};");
@@ -28,12 +28,12 @@ class FilmDB : IRepo {
                 )
             }
             connection.close();
-            return film!!
+
         }
         catch (exception:Exception){
             exception.printStackTrace()
         }
-        return false
+        return film!!
     }
 
     override fun getAll(): List<Any> {
@@ -64,7 +64,7 @@ class FilmDB : IRepo {
         return films;
     }
 
-    override fun insertOne(objeto: Any) {
+    override fun insertOne(objeto: Any) : Boolean {
 
         val film : Film = objeto as Film;
 
@@ -72,13 +72,15 @@ class FilmDB : IRepo {
             val connection = MariaDB();
             val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
             connection.close();
+            return true
         }
         catch (exception:Exception){
             exception.printStackTrace()
+            return false
         }
     }
 
-    override fun insertMult(lista: List<Any>) {
+    override fun insertMult(lista: List<Any>) : Boolean{
         val films = lista as List<Film>
 
         try {
@@ -87,15 +89,16 @@ class FilmDB : IRepo {
                 val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
             }
             connection.close();
-
+            return true
         }
         catch (exception:Exception){
             exception.printStackTrace()
+            return false
         }
 
     }
 
-    override fun update(id: Int, newObject: Any) {
+    override fun update(id: Int, newObject: Any) : Boolean{
         try{
             val connection = MariaDB()
             val film : Film = newObject as Film
@@ -103,23 +106,26 @@ class FilmDB : IRepo {
             val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Filmes SET nome = '${film.name}', tema = '${film.theme}', disponivel = '${film.available}', nota = ${film.rating}, poster = '${film.poster}' WHERE id = ${id};")
 
             connection.close()
-
+            return true
         }
         catch (exception:Exception){
             exception.printStackTrace()
+            return false
         }
     }
 
-    override fun delete(id: Int) {
+    override fun delete(id: Int) : Boolean{
         try{
             val connection = MariaDB()
 
             val resultSet = connection.executeQuery("DELETE FROM aplicacaoDB.Filmes WHERE id = ${id};")
 
             connection.close()
+            return true
         }
         catch (exception:Exception){
             exception.printStackTrace()
+            return false
         }
 
     }
