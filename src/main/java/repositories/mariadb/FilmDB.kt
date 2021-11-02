@@ -10,32 +10,30 @@ import repositories.mariadb.MariaDB
 
 class FilmDB : IRepo {
     override fun getOne(id: Int): Any {
-        val film : Film? = null
         try {
+            var film : Film? = null
 
             val connection = MariaDB();
 
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes WHERE id = ${id};");
 
-            if (resultSet != null) {
-                while (resultSet.next()){
-                    val film = Film(
-                        resultSet.getInt("id"),
-                        resultSet.getString("nome"),
-                        resultSet.getString("tema"),
-                        resultSet.getString("disponivel"),
-                        resultSet.getFloat("nota"),
-                        resultSet.getString("poster")
-                    )
-                }
+            while (resultSet!!.next()){
+                film = Film(
+                    resultSet.getInt("id"),
+                    resultSet.getString("nome"),
+                    resultSet.getString("tema"),
+                    resultSet.getString("disponivel"),
+                    resultSet.getFloat("nota"),
+                    resultSet.getString("poster")
+                )
             }
-            resultSet!!.close();
             connection.close();
+            return film!!
         }
         catch (exception:Exception){
             exception.printStackTrace()
         }
-        return film!!
+        return false
     }
 
     override fun getAll(): List<Any> {
@@ -45,7 +43,7 @@ class FilmDB : IRepo {
             val connection = MariaDB()
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes;")
 
-            while (resultSet?.next()!!) {
+            while (resultSet!!.next()) {
                 films.add(
                     Film(
                         resultSet.getInt("id"),
@@ -57,16 +55,13 @@ class FilmDB : IRepo {
                     )
                 )
             }
-            resultSet!!.close();
             connection.close();
         }
         catch (exception:Exception){
             exception.printStackTrace()
-
         }
 
         return films;
-
     }
 
     override fun insertOne(objeto: Any) {
@@ -75,7 +70,7 @@ class FilmDB : IRepo {
 
         try {
             val connection = MariaDB();
-            val resultSet = connection.executeQuery("INSERT INTO Filmes (nome, tema, disponivel, nota) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
+            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
             connection.close();
         }
         catch (exception:Exception){
@@ -84,12 +79,12 @@ class FilmDB : IRepo {
     }
 
     override fun insertMult(lista: List<Any>) {
-        val films = mutableListOf<Film>()
+        val films = lista as List<Film>
 
         try {
             val connection = MariaDB();
             for (film : Film in films){
-                val resultSet = connection.executeQuery("INSERT INTO Filmes (nome, tema, disponivel, nota) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
+                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
             }
             connection.close();
 
@@ -105,7 +100,7 @@ class FilmDB : IRepo {
             val connection = MariaDB()
             val film : Film = newObject as Film
 
-            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Filmes SET nome = '${film.name}', tema = '${film.theme}', diponivel = '${film.available}', nota = ${film.rating}, poster = '${film.poster}' WHERE id = ${id};")
+            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Filmes SET nome = '${film.name}', tema = '${film.theme}', disponivel = '${film.available}', nota = ${film.rating}, poster = '${film.poster}' WHERE id = ${id};")
 
             connection.close()
 
