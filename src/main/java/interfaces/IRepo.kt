@@ -7,8 +7,8 @@ package main.java.interfaces
 interface IRepo{
     fun getOne(id:Int): Any
     fun getAll(): List<Any>
-    fun insertOne(objeto: Any)
-    fun insertMult(lista: List<Any>)
-    fun update(id: Int, newObject: Any)
-    fun delete(id: Int)
+    fun insertOne(objeto: Any): Boolean
+    fun insertMult(lista: List<Any>): Boolean
+    fun update(id: Int, newObject: Any): Boolean
+    fun delete(id: Int): Boolean
 }
