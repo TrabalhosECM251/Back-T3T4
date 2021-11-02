@@ -41,10 +41,9 @@ class FilmDB : IRepo {
     override fun getAll(): List<Any> {
         val films = mutableListOf<Film>()
         try {
-            //Cria uma conexão com o banco
+
             val connection = MariaDB()
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes;")
-            //Intera pelo resultado obtido
 
             while (resultSet?.next()!!) {
                 films.add(
@@ -65,6 +64,7 @@ class FilmDB : IRepo {
             exception.printStackTrace()
 
         }
+
         return films;
 
     }
@@ -76,7 +76,6 @@ class FilmDB : IRepo {
         try {
             val connection = MariaDB();
             val resultSet = connection.executeQuery("INSERT INTO Filmes (nome, tema, disponivel, nota) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
-            resultSet!!.close();
             connection.close();
         }
         catch (exception:Exception){
@@ -93,6 +92,7 @@ class FilmDB : IRepo {
                 val resultSet = connection.executeQuery("INSERT INTO Filmes (nome, tema, disponivel, nota) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
             }
             connection.close();
+
         }
         catch (exception:Exception){
             exception.printStackTrace()
@@ -101,10 +101,31 @@ class FilmDB : IRepo {
     }
 
     override fun update(id: Int, newObject: Any) {
-        TODO("Not yet implemented")
+        try{
+            val connection = MariaDB()
+            val film : Film = newObject as Film
+
+            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Filmes SET nome = '${film.name}', tema = '${film.theme}', diponivel = '${film.available}', nota = ${film.rating}, poster = '${film.poster}' WHERE id = ${id};")
+
+            connection.close()
+
+        }
+        catch (exception:Exception){
+            exception.printStackTrace()
+        }
     }
 
     override fun delete(id: Int) {
-        TODO("Not yet implemented")
+        try{
+            val connection = MariaDB()
+
+            val resultSet = connection.executeQuery("DELETE FROM aplicacaoDB.Filmes WHERE id = ${id};")
+
+            connection.close()
+        }
+        catch (exception:Exception){
+            exception.printStackTrace()
+        }
+
     }
 }
