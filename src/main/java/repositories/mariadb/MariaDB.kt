@@ -11,10 +11,10 @@ class MariaDB {
     var connection : Connection? = null
     var statement : Statement? = null
     var result : ResultSet? = null
-    val user = MariaDB.user
-    val password = MariaDB.password
-    val host = MariaDB.host
-    val port = MariaDB.port
+    private val user = MariaDB.user
+    private val password = MariaDB.password
+    private val host = MariaDB.host
+    private val port = MariaDB.port
 
     init {
         try {

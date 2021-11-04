@@ -23,8 +23,8 @@ class ReviewDB : IRepo {
                     resultSet.getInt("id"),
                     resultSet.getInt("idFilme"),
                     resultSet.getInt("idUsuario"),
-                    Classification.valueOf(resultSet.getString("classificacao")),
-                    resultSet.getFloat("nota"),
+                    Classification.valueOf(resultSet.getString("classificacao").uppercase().replace(" ", "")),
+                    resultSet.getFloat("notaUsuario"),
                     resultSet.getString("comentario")
                 )
             }
@@ -49,7 +49,7 @@ class ReviewDB : IRepo {
                         resultSet.getInt("id"),
                         resultSet.getInt("idFilme"),
                         resultSet.getInt("idUsuario"),
-                        Classification.valueOf(resultSet.getString("classificacao")),
+                        Classification.valueOf(resultSet.getString("classificacao").uppercase().replace(" ", "")),
                         resultSet.getFloat("notaUsuario"),
                         resultSet.getString("comentario")
                     )

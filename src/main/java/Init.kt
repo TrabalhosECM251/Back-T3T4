@@ -7,7 +7,6 @@ import config.Ktor
 import controllers.ktor.routers.configureRouting
 import main.java.repositories.mariadb.FilmDB // Apagar dps
 import models.Film
-import main.java.controllers.ktor.routers.RouterReview
 import main.java.repositories.mariadb.ReviewDB
 import main.java.repositories.mariadb.UserDB
 
@@ -20,8 +19,6 @@ class Init {
     private val userDB = UserDB()
     private val filmDB = FilmDB()
     private val reviewDB = ReviewDB()
-
-    private val reviewRoutes = RouterReview(reviewDB)
 
     fun start() {
         embeddedServer(Netty, port = Ktor.port, host = Ktor.host) {

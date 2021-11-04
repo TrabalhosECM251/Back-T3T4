@@ -12,6 +12,7 @@ fun Application.configureRouting(userDB: IRepo, reviewDB: IRepo, filmDB: IRepo){
             call.respondText("Hello World!")
         }
         registerReviewRoutes(reviewDB)
-
+        registerUserRoutes(userDB)
+        registerFilmRoutes(filmDB)
     }
 }
