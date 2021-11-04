@@ -21,7 +21,7 @@ class ReviewDB : IRepo {
             while (resultSet!!.next()){
                 review = Review(
                     resultSet.getInt("id"),
-                    resultSet.getInt("idFilme"),
+                    resultSet.getInt("idMoviee"),
                     resultSet.getInt("idUsuario"),
                     Classification.valueOf(resultSet.getString("classificacao").uppercase().replace(" ", "")),
                     resultSet.getFloat("notaUsuario"),
@@ -47,7 +47,7 @@ class ReviewDB : IRepo {
                 reviews.add(
                     Review(
                         resultSet.getInt("id"),
-                        resultSet.getInt("idFilme"),
+                        resultSet.getInt("idMoviee"),
                         resultSet.getInt("idUsuario"),
                         Classification.valueOf(resultSet.getString("classificacao").uppercase().replace(" ", "")),
                         resultSet.getFloat("notaUsuario"),
@@ -69,7 +69,7 @@ class ReviewDB : IRepo {
 
         try {
             val connection = MariaDB();
-            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews ( idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES ( ${review.idFilm}, ${review.idUser}, '${review.classification}', ${review.rating}, ${review.comment});")
+            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews ( idMoviee, idUsuario, classificacao, notaUsuario, comentario) VALUES ( ${review.idMovie}, ${review.idUser}, '${review.classification}', ${review.rating}, ${review.comment});")
             connection.close();
             return true
         }
@@ -85,7 +85,7 @@ class ReviewDB : IRepo {
         try {
             val connection = MariaDB();
             for (review : Review in reviews){
-                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews (idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES (${review.idFilm}, ${review.idUser}, '${review.classification}', ${review.rating}, '${review.comment}');")
+                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews (idMoviee, idUsuario, classificacao, notaUsuario, comentario) VALUES (${review.idMovie}, ${review.idUser}, '${review.classification}', ${review.rating}, '${review.comment}');")
             }
             connection.close();
             return true
@@ -102,7 +102,7 @@ class ReviewDB : IRepo {
         try{
             val connection = MariaDB()
 
-            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Reviews SET idFilme = ${review.idFilm}, idUsuario = ${review.idUser}, classificacao = '${review.classification}', notaUsuario = ${review.rating}, comentario = ${review.comment} WHERE id = ${id};")
+            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Reviews SET idMoviee = ${review.idMovie}, idUsuario = ${review.idUser}, classificacao = '${review.classification}', notaUsuario = ${review.rating}, comentario = ${review.comment} WHERE id = ${id};")
             connection.close()
             return true
         }

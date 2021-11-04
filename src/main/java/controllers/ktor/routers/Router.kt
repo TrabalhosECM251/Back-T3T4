@@ -6,13 +6,13 @@ import io.ktor.routing.*
 import main.java.interfaces.IRepo
 import main.java.controllers.ktor.routers.registerReviewRoutes
 
-fun Application.configureRouting(userDB: IRepo, reviewDB: IRepo, filmDB: IRepo){
+fun Application.configureRouting(userDB: IRepo, reviewDB: IRepo, MovieDB: IRepo){
     routing {
         get("/") {
             call.respondText("Hello World!")
         }
         registerReviewRoutes(reviewDB)
         registerUserRoutes(userDB)
-        registerFilmRoutes(filmDB)
+        registerMovieRoutes(MovieDB)
     }
 }

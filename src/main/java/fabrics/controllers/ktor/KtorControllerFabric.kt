@@ -21,4 +21,16 @@ class KtorControllerFabric (repository: IRepo) : ICtrl{
     override fun getAllReviews(): String {
         return CGetAllReviews(repository).exec()
     }
+
+    override fun getOneMovie(id: Int): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun createMovie(review: Review) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getAllMovies(): String {
+        TODO("Not yet implemented")
+    }
 }

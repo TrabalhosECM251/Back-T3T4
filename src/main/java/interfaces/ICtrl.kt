@@ -10,4 +10,8 @@ interface ICtrl {
     fun getOneReview(id: Int): String
     fun createReview(review: Review)
     fun getAllReviews(): String
+
+    fun getOneMovie(id: Int): String
+    fun createMovie(review: Review)
+    fun getAllMovies(): String
 }

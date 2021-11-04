@@ -1,16 +1,16 @@
 package main.java.repositories.mariadb
 
 import main.java.interfaces.IRepo
-import models.Film
+import models.Movie
 import repositories.mariadb.MariaDB
 
 /*
     Classe responsável por declarar métodos de manipulação do DB de User
  */
 
-class FilmDB : IRepo {
+class MovieDB : IRepo {
     override fun getOne(id: Int): Any {
-        var film : Film? = null
+        var Movie : Movie? = null
 
         try {
             val connection = MariaDB();
@@ -18,7 +18,7 @@ class FilmDB : IRepo {
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes WHERE id = ${id};");
 
             while (resultSet!!.next()){
-                film = Film(
+                Movie = Movie(
                     resultSet.getInt("id"),
                     resultSet.getString("nome"),
                     resultSet.getString("tema"),
@@ -33,19 +33,19 @@ class FilmDB : IRepo {
         catch (exception:Exception){
             exception.printStackTrace()
         }
-        return film!!
+        return Movie!!
     }
 
     override fun getAll(): List<Any> {
-        val films = mutableListOf<Film>()
+        val Movies = mutableListOf<Movie>()
         try {
 
             val connection = MariaDB()
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes;")
 
             while (resultSet!!.next()) {
-                films.add(
-                    Film(
+                Movies.add(
+                    Movie(
                         resultSet.getInt("id"),
                         resultSet.getString("nome"),
                         resultSet.getString("tema"),
@@ -61,16 +61,16 @@ class FilmDB : IRepo {
             exception.printStackTrace()
         }
 
-        return films;
+        return Movies;
     }
 
     override fun insertOne(objeto: Any) : Boolean {
 
-        val film : Film = objeto as Film;
+        val Movie : Movie = objeto as Movie;
 
         try {
             val connection = MariaDB();
-            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
+            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${Movie.name}', '${Movie.theme}', '${Movie.available}', ${Movie.rating}, '${Movie.poster}');")
             connection.close();
             return true
         }
@@ -81,12 +81,12 @@ class FilmDB : IRepo {
     }
 
     override fun insertMult(lista: List<Any>) : Boolean{
-        val films = lista as List<Film>
+        val Movies = lista as List<Movie>
 
         try {
             val connection = MariaDB();
-            for (film : Film in films){
-                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${film.name}', '${film.theme}', '${film.available}', ${film.rating}, '${film.poster}');")
+            for (Movie : Movie in Movies){
+                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${Movie.name}', '${Movie.theme}', '${Movie.available}', ${Movie.rating}, '${Movie.poster}');")
             }
             connection.close();
             return true
@@ -101,9 +101,9 @@ class FilmDB : IRepo {
     override fun update(id: Int, newObject: Any) : Boolean{
         try{
             val connection = MariaDB()
-            val film : Film = newObject as Film
+            val Movie : Movie = newObject as Movie
 
-            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Filmes SET nome = '${film.name}', tema = '${film.theme}', disponivel = '${film.available}', nota = ${film.rating}, poster = '${film.poster}' WHERE id = ${id};")
+            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Filmes SET nome = '${Movie.name}', tema = '${Movie.theme}', disponivel = '${Movie.available}', nota = ${Movie.rating}, poster = '${Movie.poster}' WHERE id = ${id};")
 
             connection.close()
             return true

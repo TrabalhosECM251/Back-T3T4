@@ -8,9 +8,9 @@ import main.java.interfaces.IRepo
 	Classe responsável pelo manejamento de rotas
  */
 
-fun Route.filmRoutes(filmDB: IRepo){
+fun Route.MovieRoutes(movieDB: IRepo){
 
-    route("/film") {
+    route("/movies") {
 
         //Rota que retorna todas as reviews
         get{
@@ -26,8 +26,8 @@ fun Route.filmRoutes(filmDB: IRepo){
     }
 }
 
-fun Application.registerFilmRoutes(filmDB: IRepo){
+fun Application.registerMovieRoutes(movieDB: IRepo){
     routing {
-        filmRoutes(filmDB)
+        MovieRoutes(movieDB)
     }
 }
