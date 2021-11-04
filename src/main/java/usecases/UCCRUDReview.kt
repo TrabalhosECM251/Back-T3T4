@@ -59,7 +59,7 @@ class UCCRUDReview (dataBase: IRepo){
             return this.db.getOne(id)
         }
         else{
-            throw ErrorsCRUDReview("Erro ao tentar adquirir file por id inválido [usecase CRUDReview.getByID]")
+            throw ErrorsCRUDReview("Erro ao tentar adquirir review por id inválido [usecase CRUDReview.getByID]")
         }
     }
 
@@ -96,4 +96,15 @@ class UCCRUDReview (dataBase: IRepo){
         }
     }
 
+    /*
+        Retorna todos os reviews
+     */
+    fun getAll() : List<Any>{
+        try {
+            return this.db.getAll()
+        }
+        catch (e: Exception){
+            throw ErrorsCRUDReview("Erro ao tentar adquirir reviews [usecase CRUDReview.getAll]")
+        }
+    }
 }

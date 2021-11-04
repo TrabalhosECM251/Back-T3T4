@@ -30,8 +30,7 @@ class UCCRUDUser (dataBase: IRepo){
         Parâmetros:
             userJSON: String = """{"name": String,
                                "email": String,
-                               "password": String,
-                               "rating": Float}"""
+                               "password": String}"""
         Retorno:
             Boolean
      */

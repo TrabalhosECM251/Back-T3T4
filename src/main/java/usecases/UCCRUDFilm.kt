@@ -31,7 +31,8 @@ class UCCRUDFilm (dataBase: IRepo){
             filmJSON: String = """{"name": String,
                                "theme": String,
                                "available": String,
-                               "rating": Float}"""
+                               "rating": Float,
+                               "poster": String}"""
         Retorno:
             Boolean
      */
