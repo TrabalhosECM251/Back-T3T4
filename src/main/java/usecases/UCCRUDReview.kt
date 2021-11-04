@@ -38,9 +38,13 @@ class UCCRUDReview (dataBase: IRepo){
      */
     fun createByJson(reviewJSON: String){
         try{
+            println("Create By JSON")
             val mapper = jacksonObjectMapper()
+            println("Create By JSON5")
             val review: Review = mapper.readValue(reviewJSON)
+            println("Create By JSON2")
             this.db.insertOne(review)
+            println("Create By JSON3")
         }
         catch (e: Exception){
             throw ErrorsCRUDReview("Erro ao tentar inserir review com algum parâmetro nulo [usecase CRUDReview.createByJson]")

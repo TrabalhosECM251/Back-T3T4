@@ -13,5 +13,5 @@ import models.enums.Classification
         comment: string - Comentário da avaliação
  */
 
-data class Review(val id: Int?, val idMovie: Int, val idUser: Int, val classification: Classification, val rating: Float,
+data class Review(val id: Int? = null, val idMovie: Int, val idUser: Int, val classification: Classification, val rating: Float,
                   val comment: String)

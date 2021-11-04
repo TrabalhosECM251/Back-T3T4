@@ -8,7 +8,7 @@ import models.Review
 
 interface ICtrl {
     fun getOneReview(id: Int): String
-    fun createReview(review: Review)
+    fun createReview(reviewJSON: String)
     fun getAllReviews(): String
 
     fun getOneMovie(id: Int): String

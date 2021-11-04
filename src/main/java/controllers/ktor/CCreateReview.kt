@@ -5,15 +5,17 @@ import main.java.interfaces.IRepo
 import models.Review
 import usecases.UCCRUDReview
 
-class CCreateReview (repository: IRepo){
+class CCreateReview (reviewDB: IRepo){
         //Banco de dados
-        val repository = repository
+        val reviewDB = reviewDB
         //UseCase
-        val useCase = UCCRUDReview(repository)
+        val useCase = UCCRUDReview(reviewDB)
 
-        fun exec(review: Review){
+        fun exec(reviewJSON: String){
             try{
-                useCase.createByObject(review)
+                println("iniciando criacao do review")
+                useCase.createByJson(reviewJSON)
+                println("Teoricamente criou o review")
             }
             catch(e: Exception){
             }

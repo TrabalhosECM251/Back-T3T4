@@ -5,6 +5,8 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import main.java.interfaces.IRepo
 import models.Movie
 import usecases.errors.ErrorsCRUDMovie
+import usecases.errors.ErrorsCRUDReview
+
 /*
     Classe responsável por armazenar os usecases de CRUD de Moviees
     Construtor:
@@ -93,6 +95,18 @@ class UCCRUDMovie (dataBase: IRepo){
         }
         catch (e: Exception){
             throw ErrorsCRUDMovie("Erro ao tentar deletar dados do Moviee de ID: $id [usecase CRUDMovie.deleteByID]")
+        }
+    }
+
+    /*
+        Retorna todos os filmes
+     */
+    fun getAll() : List<Any>{
+        try {
+            return this.db.getAll()
+        }
+        catch (e: Exception){
+            throw ErrorsCRUDReview("Erro ao tentar adquirir reviews [usecase CRUDReview.getAll]")
         }
     }
 

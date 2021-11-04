@@ -1,8 +1,6 @@
 package fabrics.controllers.ktor
 
-import controllers.ktor.CGetOneReviewKtor
-import controllers.ktor.CCreateReview
-import controllers.ktor.CGetAllReviews
+import controllers.ktor.*
 import interfaces.ICtrl
 import main.java.interfaces.IRepo
 import models.Review
@@ -11,11 +9,11 @@ class KtorControllerFabric (repository: IRepo) : ICtrl{
     val repository = repository
 
     override fun getOneReview(id: Int): String{
-        return CGetOneReviewKtor(repository).exec(id)
+        return CGetOneReview(repository).exec(id)
     }
 
-    override fun createReview(review : Review) {
-        return CCreateReview(repository).exec(review)
+    override fun createReview(reviewJSON : String) {
+        return CCreateReview(repository).exec(reviewJSON)
     }
 
     override fun getAllReviews(): String {
@@ -23,7 +21,7 @@ class KtorControllerFabric (repository: IRepo) : ICtrl{
     }
 
     override fun getOneMovie(id: Int): String {
-        TODO("Not yet implemented")
+        return CGetOneMovie(repository).exec(id)
     }
 
     override fun createMovie(review: Review) {
@@ -31,6 +29,6 @@ class KtorControllerFabric (repository: IRepo) : ICtrl{
     }
 
     override fun getAllMovies(): String {
-        TODO("Not yet implemented")
+        return CGetAllMovies(repository).exec()
     }
 }

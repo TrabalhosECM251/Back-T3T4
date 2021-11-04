@@ -4,13 +4,13 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import main.java.interfaces.IRepo
 import usecases.UCCRUDReview
 
-class CGetOneReviewKtor(repository: IRepo ) {
+class CGetOneReview(reviewDB: IRepo ) {
 
 
     //Banco de dados
-    val repository = repository
+    val reviewDB = reviewDB
     //UseCase
-    val useCase = UCCRUDReview(repository)
+    val useCase = UCCRUDReview(reviewDB)
 
     fun exec(id: Int): String{
         try{

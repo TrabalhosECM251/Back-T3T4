@@ -30,7 +30,8 @@ fun Route.reviewRoutes(reviewDB: IRepo){
 
         //Rota que posta uma review
         post {
-            val review = call.receive<Review>()
+            val review = call.receive<String>()
+            println("TEXTO REVIEW "+ review)
             KtorControllerFabric(reviewDB).createReview(review)
             call.respondText("Review Criada", status = HttpStatusCode.Created)
         }

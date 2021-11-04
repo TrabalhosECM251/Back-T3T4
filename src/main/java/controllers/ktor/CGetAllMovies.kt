@@ -2,23 +2,23 @@ package controllers.ktor
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import main.java.interfaces.IRepo
-import usecases.UCCRUDReview
+import usecases.UCCRUDMovie
 
-class CGetAllReviews (reviewDB: IRepo){
+class CGetAllMovies  (movieDB: IRepo) {
     //Banco de dados
-    val reviewDB = reviewDB
+    val movieDB = movieDB
     //UseCase
-    val useCase = UCCRUDReview(reviewDB)
+    val useCase = UCCRUDMovie(movieDB)
 
     fun exec(): String{
         try{
-            var reviews = useCase.getAll()
+            var movies = useCase.getAll()
             val mapper = jacksonObjectMapper()
-            return mapper.writeValueAsString(reviews)
+            return mapper.writeValueAsString(movies)
         }
         catch(e: Exception){
 
         }
-        return "Erro no Controller get one review"
+        return "Erro no Controller get all movies"
     }
 }
