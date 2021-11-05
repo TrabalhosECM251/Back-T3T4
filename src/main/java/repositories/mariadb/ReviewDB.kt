@@ -68,9 +68,9 @@ class ReviewDB : IRepo {
         val review : Review = objeto as Review;
 
         try {
-            println("tentando inserir o review")
             val connection = MariaDB();
-            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews ( idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES ( ${review.idMovie}, ${review.idUser}, '${review.classification}', ${review.rating}, ${review.comment});")
+            println("LOG: INSERT INTO aplicacaoDB.Reviews ( idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES ( ${review.idMovie}, ${review.idUser}, \"${review.classification.toString()}\", ${review.rating}, \"${review.comment}\");")
+            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews ( idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES ( ${review.idMovie}, ${review.idUser}, \"${review.classification.toString()}\", ${review.rating}, \"${review.comment}\");")
             connection.close();
             return true
         }
