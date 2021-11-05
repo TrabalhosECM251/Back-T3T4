@@ -4,6 +4,8 @@ import main.java.interfaces.IRepo
 import models.Review
 import models.enums.Classification
 import repositories.mariadb.MariaDB
+import java.text.SimpleDateFormat
+import java.util.*
 
 /*
     Classe responsável por declarar métodos de manipulação do DB de Reviews
@@ -15,7 +17,7 @@ class ReviewDB : IRepo {
 
         try {
             val connection = MariaDB();
-
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Reviews")
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Reviews WHERE id = ${id};");
 
             while (resultSet!!.next()){
@@ -39,8 +41,8 @@ class ReviewDB : IRepo {
     override fun getAll(): List<Any> {
         val reviews = mutableListOf<Review>()
         try {
-
             val connection = MariaDB()
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Reviews")
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Reviews;")
 
             while (resultSet!!.next()) {
@@ -69,7 +71,7 @@ class ReviewDB : IRepo {
 
         try {
             val connection = MariaDB();
-            println("LOG: INSERT INTO aplicacaoDB.Reviews ( idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES ( ${review.idMovie}, ${review.idUser}, \"${review.classification.toString()}\", ${review.rating}, \"${review.comment}\");")
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Reviews")
             val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews ( idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES ( ${review.idMovie}, ${review.idUser}, \"${review.classification.toString()}\", ${review.rating}, \"${review.comment}\");")
             connection.close();
             return true
@@ -84,9 +86,10 @@ class ReviewDB : IRepo {
         val reviews = lista as List<Review>
 
         try {
-            val connection = MariaDB();
+            val connection = MariaDB()
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Reviews")
             for (review : Review in reviews){
-                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews (idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES (${review.idMovie}, ${review.idUser}, '${review.classification}', ${review.rating}, '${review.comment}');")
+                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews (idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES (${review.idMovie}, ${review.idUser}, \"${review.classification}\", ${review.rating}, \"${review.comment}\");")
             }
             connection.close();
             return true
@@ -102,8 +105,8 @@ class ReviewDB : IRepo {
         val review : Review = newObject as Review
         try{
             val connection = MariaDB()
-
-            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Reviews SET idFilme = ${review.idMovie}, idUsuario = ${review.idUser}, classificacao = '${review.classification}', notaUsuario = ${review.rating}, comentario = ${review.comment} WHERE id = ${id};")
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer UPDATE na tabela Reviews")
+            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Reviews SET idFilme = ${review.idMovie}, idUsuario = ${review.idUser}, classificacao = \"${review.classification}\", notaUsuario = ${review.rating}, comentario = \"${review.comment}\" WHERE id = ${id};")
             connection.close()
             return true
         }
@@ -116,7 +119,7 @@ class ReviewDB : IRepo {
     override fun delete(id: Int) : Boolean{
         try{
             val connection = MariaDB()
-
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer DELETE na tabela Reviews")
             val resultSet = connection.executeQuery("DELETE FROM aplicacaoDB.Reviews WHERE id = ${id};")
 
             connection.close()

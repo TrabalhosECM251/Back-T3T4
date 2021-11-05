@@ -3,6 +3,8 @@ package main.java.repositories.mariadb
 import main.java.interfaces.IRepo
 import models.Movie
 import repositories.mariadb.MariaDB
+import java.text.SimpleDateFormat
+import java.util.*
 
 /*
     Classe responsável por declarar métodos de manipulação do DB de User
@@ -14,7 +16,7 @@ class MovieDB : IRepo {
 
         try {
             val connection = MariaDB();
-
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Filmes")
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes WHERE id = ${id};");
 
             while (resultSet!!.next()){
@@ -41,6 +43,7 @@ class MovieDB : IRepo {
         try {
 
             val connection = MariaDB()
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Filmes")
             val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes;")
 
             while (resultSet!!.next()) {
@@ -70,7 +73,8 @@ class MovieDB : IRepo {
 
         try {
             val connection = MariaDB();
-            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${Movie.name}', '${Movie.theme}', '${Movie.available}', ${Movie.rating}, '${Movie.poster}');")
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Filmes")
+            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES (\"${Movie.name}\", \"${Movie.theme}\", \"${Movie.available}\", ${Movie.rating}, \"${Movie.poster}\");")
             connection.close();
             return true
         }
@@ -84,9 +88,10 @@ class MovieDB : IRepo {
         val Movies = lista as List<Movie>
 
         try {
-            val connection = MariaDB();
+            val connection = MariaDB()
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Filmes")
             for (Movie : Movie in Movies){
-                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES ('${Movie.name}', '${Movie.theme}', '${Movie.available}', ${Movie.rating}, '${Movie.poster}');")
+                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Filmes (nome, tema, disponivel, nota, poster) VALUES (\"${Movie.name}\", \"${Movie.theme}\", \"${Movie.available}\", ${Movie.rating}, \"${Movie.poster}\");")
             }
             connection.close();
             return true
@@ -102,9 +107,9 @@ class MovieDB : IRepo {
         try{
             val connection = MariaDB()
             val Movie : Movie = newObject as Movie
-
-            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Filmes SET nome = '${Movie.name}', tema = '${Movie.theme}', disponivel = '${Movie.available}', nota = ${Movie.rating}, poster = '${Movie.poster}' WHERE id = ${id};")
-
+            var query =
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer UPDATE na tabela Filmes")
+            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Filmes SET nome = \"${Movie.name}\", tema = \"${Movie.theme}\", disponivel = \"${Movie.available}\", nota = ${Movie.rating}, poster = \"${Movie.poster}\" WHERE id = ${id};")
             connection.close()
             return true
         }
@@ -117,7 +122,7 @@ class MovieDB : IRepo {
     override fun delete(id: Int) : Boolean{
         try{
             val connection = MariaDB()
-
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer DELETE na tabela Filmes")
             val resultSet = connection.executeQuery("DELETE FROM aplicacaoDB.Filmes WHERE id = ${id};")
 
             connection.close()
