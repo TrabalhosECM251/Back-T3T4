@@ -3,7 +3,7 @@ package fabrics.controllers.ktor
 import controllers.ktor.*
 import interfaces.ICtrl
 import main.java.interfaces.IRepo
-import models.Review
+
 
 class KtorControllerFabric (repository: IRepo) : ICtrl{
     val repository = repository
@@ -24,7 +24,7 @@ class KtorControllerFabric (repository: IRepo) : ICtrl{
         return CGetOneMovie(repository).exec(id)
     }
 
-    override fun createMovie(review: Review) {
+    override fun createMovie(movieJSON: String) {
         TODO("Not yet implemented")
     }
 
