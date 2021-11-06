@@ -29,7 +29,7 @@ fun Route.MovieRoutes(movieDB: IRepo){
             val filterJSON = mapper.writeValueAsString(filter)
 
             return@get call.respondText(KtorControllerFabric(movieDB).getAllMovies(filterJSON))
-           
+
         }
 
         //Rota que retorna um review
