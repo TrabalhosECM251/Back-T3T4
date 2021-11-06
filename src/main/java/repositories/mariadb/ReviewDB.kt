@@ -38,7 +38,7 @@ class ReviewDB : IRepo {
         return review!!
     }
 
-    override fun getAll(objeto: Any): List<Any> {
+    override fun getAll(objeto: Any?): List<Any> {
         val reviews = mutableListOf<Review>()
         try {
             val connection = MariaDB()
