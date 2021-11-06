@@ -39,7 +39,7 @@ class MovieDB : IRepo {
         return Movie!!
     }
 
-    override fun getAll(objeto: Any): List<Any> {
+    override fun getAll(objeto: Any?): List<Any> {
         val filter : Filter = objeto as Filter;
         val Movies = mutableListOf<Movie>()
         try {
