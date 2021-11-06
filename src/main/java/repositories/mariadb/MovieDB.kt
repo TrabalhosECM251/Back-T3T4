@@ -38,13 +38,13 @@ class MovieDB : IRepo {
         return Movie!!
     }
 
-    override fun getAll(): List<Any> {
+    override fun getAll(name: String, theme: String, available: String): List<Any> {
         val Movies = mutableListOf<Movie>()
         try {
 
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Filmes")
-            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes;")
+            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes WHERE nome LIKE '${name}%' AND tema LIKE '${theme}%' AND disponivel LIKE '${available}%';")
 
             while (resultSet!!.next()) {
                 Movies.add(

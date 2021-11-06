@@ -12,7 +12,10 @@ class CGetAllMovies  (movieDB: IRepo) {
 
     fun exec(): String{
         try{
-            var movies = useCase.getAll()
+            /* TODO: RENAN AQUI TEM Q PASSAR OS FILTROS PRO GETALL
+                SO QUE TEM Q PEGAR DE UM JSON N?, ENFIM TEMO Q PENSA SOBRE AQUI
+             */
+            var movies = useCase.getAll("", "", "")
             val mapper = jacksonObjectMapper()
             return mapper.writeValueAsString(movies)
         }

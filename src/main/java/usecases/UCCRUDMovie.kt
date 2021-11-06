@@ -101,9 +101,9 @@ class UCCRUDMovie (dataBase: IRepo){
     /*
         Retorna todos os filmes
      */
-    fun getAll() : List<Any>{
+    fun getAll(name: String, theme: String, available: String) : List<Any>{
         try {
-            return this.db.getAll()
+            return this.db.getAll(name, theme, available)
         }
         catch (e: Exception){
             throw ErrorsCRUDReview("Erro ao tentar adquirir reviews [usecase CRUDReview.getAll]")

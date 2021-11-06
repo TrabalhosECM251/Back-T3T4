@@ -37,7 +37,7 @@ class UserDB : IRepo {
         return user!!
     }
 
-    override fun getAll(): List<Any> {
+    override fun getAll(name: String, theme: String, available: String): List<Any> {
         val reviews = mutableListOf<User>()
         try {
 
