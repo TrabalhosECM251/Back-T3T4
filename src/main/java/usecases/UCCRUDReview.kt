@@ -3,6 +3,7 @@ package usecases
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import main.java.interfaces.IRepo
+import models.Filter
 import models.Review
 import usecases.errors.ErrorsCRUDReview
 /*
@@ -101,7 +102,7 @@ class UCCRUDReview (dataBase: IRepo){
      */
     fun getAll() : List<Any>{
         try {
-            return this.db.getAll()
+            return this.db.getAll(null)
         }
         catch (e: Exception){
             throw ErrorsCRUDReview("Erro ao tentar adquirir reviews [usecase CRUDReview.getAll]")
