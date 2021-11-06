@@ -10,12 +10,12 @@ class CGetAllMovies  (movieDB: IRepo) {
     //UseCase
     val useCase = UCCRUDMovie(movieDB)
 
-    fun exec(filter: Filter): String{
+    fun exec(filterJSON: String): String{
         try{
             /* TODO: RENAN AQUI TEM Q PASSAR OS FILTROS PRO GETALL
                 SO QUE TEM Q PEGAR DE UM JSON N?, ENFIM TEMO Q PENSA SOBRE AQUI
              */
-            var movies = useCase.getAll(filter)
+            var movies = useCase.getAll(filterJSON)
             val mapper = jacksonObjectMapper()
             return mapper.writeValueAsString(movies)
         }
