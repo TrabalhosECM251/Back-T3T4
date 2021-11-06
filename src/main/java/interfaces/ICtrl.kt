@@ -15,8 +15,6 @@ interface ICtrl {
 
     fun getOneMovie(id: Int): String
     fun createMovie(movieJSON: String)
-    fun getAllMovies(filter: Filter): String
+    fun getAllMovies(filterJSON: String): String
 
-    fun getOneUser(id: Int): String
-    fun createUser(usarJSON: String)
 }
