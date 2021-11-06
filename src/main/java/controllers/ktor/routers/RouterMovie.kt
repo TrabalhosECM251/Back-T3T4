@@ -14,8 +14,10 @@ fun Route.MovieRoutes(movieDB: IRepo){
 
     route("/movies") {
 
-        //Rota que retorna todas as reviews
+        //Rota que retorna todas os movies
+        //TODO:  COMO Q A GNT PEGAR UMA FILTER DO USUARIO
         get{
+            //return@get call.respondText(KtorControllerFabric(movieDB).getAllMovies(filter))
             return@get call.respondText(KtorControllerFabric(movieDB).getAllMovies())
         }
 
