@@ -28,7 +28,7 @@ class KtorControllerFabric (repository: IRepo) : ICtrl{
         TODO("Not yet implemented")
     }
 
-    override fun getAllMovies(): String {
-        return CGetAllMovies(repository).exec()
+    override fun getAllMovies(filterJSON: String): String {
+        return CGetAllMovies(repository).exec(filterJSON)
     }
 }
