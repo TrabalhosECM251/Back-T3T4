@@ -3,6 +3,7 @@ package usecases
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import main.java.interfaces.IRepo
+import models.Filter
 import models.Movie
 import usecases.errors.ErrorsCRUDMovie
 import usecases.errors.ErrorsCRUDReview
@@ -101,9 +102,9 @@ class UCCRUDMovie (dataBase: IRepo){
     /*
         Retorna todos os filmes
      */
-    fun getAll(name: String, theme: String, available: String) : List<Any>{
+    fun getAll(filter: Filter) : List<Any>{
         try {
-            return this.db.getAll(name, theme, available)
+            return this.db.getAll(filter)
         }
         catch (e: Exception){
             throw ErrorsCRUDReview("Erro ao tentar adquirir reviews [usecase CRUDReview.getAll]")
