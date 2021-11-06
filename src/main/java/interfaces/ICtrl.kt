@@ -1,5 +1,7 @@
 package interfaces
 
+import models.Filter
+import models.Movie
 import models.Review
 
 /*
@@ -12,6 +14,9 @@ interface ICtrl {
     fun getAllReviews(): String
 
     fun getOneMovie(id: Int): String
-    fun createMovie(review: Review)
-    fun getAllMovies(): String
+    fun createMovie(movieJSON: String)
+    fun getAllMovies(filter: Filter): String
+
+    fun getOneUser(id: Int): String
+    fun createUser(usarJSON: String)
 }
