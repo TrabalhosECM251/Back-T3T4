@@ -5,6 +5,7 @@ import com.fasterxml.jackson.module.kotlin.readValue
 import main.java.interfaces.IRepo
 import models.Filter
 import models.Movie
+import models.Review
 import usecases.errors.ErrorsCRUDMovie
 import usecases.errors.ErrorsCRUDReview
 
@@ -95,15 +96,17 @@ class UCCRUDMovie (dataBase: IRepo){
             this.db.delete(id)
         }
         catch (e: Exception){
-            throw ErrorsCRUDMovie("Erro ao tentar deletar dados do Moviee de ID: $id [usecase CRUDMovie.deleteByID]")
+            throw ErrorsCRUDMovie("Erro ao tentar deletar dados do Movie de ID: $id [usecase CRUDMovie.deleteByID]")
         }
     }
 
     /*
         Retorna todos os filmes
      */
-    fun getAll(filter: Filter) : List<Any>{
+    fun getAll(filterJSON: String) : List<Any>{
         try {
+            val mapper = jacksonObjectMapper()
+            val filter: Filter = mapper.readValue(filterJSON)
             return this.db.getAll(filter)
         }
         catch (e: Exception){
