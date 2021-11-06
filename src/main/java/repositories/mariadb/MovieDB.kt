@@ -1,6 +1,7 @@
 package main.java.repositories.mariadb
 
 import main.java.interfaces.IRepo
+import models.Filter
 import models.Movie
 import repositories.mariadb.MariaDB
 import java.text.SimpleDateFormat
@@ -38,13 +39,13 @@ class MovieDB : IRepo {
         return Movie!!
     }
 
-    override fun getAll(name: String, theme: String, available: String): List<Any> {
+    override fun getAll(filter: Filter): List<Any> {
         val Movies = mutableListOf<Movie>()
         try {
 
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Filmes")
-            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes WHERE nome LIKE '${name}%' AND tema LIKE '${theme}%' AND disponivel LIKE '${available}%';")
+            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes WHERE nome LIKE '${filter.name}%' AND tema LIKE '${filter.theme}%' AND disponivel LIKE '${filter.available}%';")
 
             while (resultSet!!.next()) {
                 Movies.add(
