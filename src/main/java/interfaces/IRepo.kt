@@ -1,6 +1,5 @@
 package main.java.interfaces
 
-import models.Filter
 
 /*
     Interface de métodos que devem ser implementados por um repositório
@@ -8,7 +7,7 @@ import models.Filter
 
 interface IRepo{
     fun getOne(id:Int): Any
-    fun getAll(filter: Filter): List<Any>
+    fun getAll(objeto: Any): List<Any>
     fun insertOne(objeto: Any): Boolean
     fun insertMult(lista: List<Any>): Boolean
     fun update(id: Int, newObject: Any): Boolean
