@@ -8,10 +8,13 @@ JDK: openjdk-16 versão 16.0.2
 3. Iniciar a VM do banco de dados
 4. Criar arquivo MariaDB.kt em src/main/java/config com o template de MariaDB.kt.template para conexão com o Banco de Dados
 5. Preencher o arquivo com as seguintes informações:
-    const val user = "admin"
-    const val password = "admin"
-    const val host = "{IP fornecido pela VM}"
+```
+    const val user = "admin"    
+    const val password = "admin"    
+    const val host = "{IP fornecido pela VM}"    
     const val port = "3306"
+```
+    
 6. Iniciar a aplicação pelo arquivo main.kt
 
 # Arquitetura
