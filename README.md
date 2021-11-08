@@ -2,6 +2,18 @@
 
 JDK: openjdk-16 versão 16.0.2
 
+# Como iniciar
+1. Baixar VM do DB modelo em: 
+2. Importar a VM no VirtualBox
+3. Iniciar a VM do banco de dados
+4. Criar arquivo MariaDB.kt em src/main/java/config com o template de MariaDB.kt.template para conexão com o Banco de Dados
+5. Preencher o arquivo com as seguintes informações:
+    const val user = "admin"
+    const val password = "admin"
+    const val host = "{IP fornecido pela VM}"
+    const val port = "3306"
+6. Iniciar a aplicação pelo arquivo main.kt
+
 # Arquitetura
 ## [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 ### Estrutura:
@@ -36,6 +48,3 @@ JDK: openjdk-16 versão 16.0.2
 * Interfaces: I maiúsculo seguido do nome em UpperCamelCase. ex: IExemplo.kt
 * Usecase: UC maiúsculo seguido do nome em UpperCamelCase. ex: UCExemplo.kt
 * Controlador: C maiúsculo segudo do nome em UpperCamelCase. ex CExemplo.kt
-
-
-
