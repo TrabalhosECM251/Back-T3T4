@@ -129,4 +129,28 @@ class UserDB : IRepo {
     override fun getAllByIDMovie(id: Int): List<Any> {
         TODO("DOES NOT IMPLEMENT")
     }
+
+    override fun existByEmail(email: String): Any {
+        var user : User = User(name = "null", email = "null", password = "null")
+
+        try {
+            val connection = MariaDB()
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Users")
+            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Usuarios WHERE email = \"$email\";")
+
+            while (resultSet!!.next()){
+                user = User(
+                    resultSet.getInt("id"),
+                    resultSet.getString("nome"),
+                    resultSet.getString("email"),
+                    resultSet.getString("senha")
+                )
+            }
+            connection.close()
+        }
+        catch (exception:Exception){
+            exception.printStackTrace()
+        }
+        return user!!
+    }
 }

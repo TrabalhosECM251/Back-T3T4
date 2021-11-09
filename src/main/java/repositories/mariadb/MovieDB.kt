@@ -140,4 +140,8 @@ class MovieDB : IRepo {
     override fun getAllByIDMovie(id: Int): List<Any> {
         TODO("DOES NOT IMPLEMENT")
     }
+
+    override fun existByEmail(email: String): Any {
+        TODO("Not yet implemented")
+    }
 }

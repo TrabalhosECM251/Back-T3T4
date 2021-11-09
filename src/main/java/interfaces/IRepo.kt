@@ -13,4 +13,5 @@ interface IRepo{
     fun update(id: Int, newObject: Any): Boolean
     fun delete(id: Int): Boolean
     fun getAllByIDMovie(id: Int): List<Any>
+    fun existByEmail(email: String): Any
 }

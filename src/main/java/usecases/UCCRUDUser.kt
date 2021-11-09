@@ -62,6 +62,26 @@ class UCCRUDUser (dataBase: IRepo){
     }
 
     /*
+        Retorna um usuário pelo email
+        Parâmetro:
+            id: Int
+        Retorno:
+            User
+     */
+    fun existByEmail(email: String) : Boolean{
+        if(email != "null"){
+            val user: User = this.db.existByEmail(email) as User
+            if (user.id == null){
+                return false
+            }
+            return true
+        }
+        else{
+            throw ErrorsCRUDUser("Erro ao tentar adquirir file por id inválido [usecase CRUDUser.getByID]")
+        }
+    }
+
+    /*
         Atualiza as informações de um usuário
         Parâmetros:
             id: Int -> ID do usuário a ser atualizado

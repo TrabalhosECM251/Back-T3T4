@@ -158,4 +158,8 @@ class ReviewDB : IRepo {
 
         return reviews;
     }
+
+    override fun existByEmail(email: String): Any {
+        TODO("Not yet implemented")
+    }
 }
