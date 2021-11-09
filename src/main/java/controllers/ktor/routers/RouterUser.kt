@@ -25,14 +25,17 @@ fun Route.userRoutes(userDB: IRepo){
         }
 
         //Rota que retorna se um usuario existe
-        get("/e"){
-            val email = call.request.queryParameters["e"]!!
-            val pass = call.request.queryParameters["p"]!!
+        post("/e"){
+            val formParameters = call.receiveParameters()
+            val email = formParameters["e"].toString()
+            val pass = formParameters["p"].toString()
             val exist = KtorControllerFabric(userDB).existByEmailAndPass(email, pass)
             if(exist == "false"){
-                return@get call.respondText(exist, status = HttpStatusCode.NotFound)
+                call.respondText(exist, status = HttpStatusCode.NotFound)
             }
-            return@get call.respondText(exist, status = HttpStatusCode.OK)
+            else {
+                call.respondText(exist, status = HttpStatusCode.OK)
+            }
         }
 
         //Rota que cria um usuario no banco

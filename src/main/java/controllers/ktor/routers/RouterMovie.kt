@@ -32,13 +32,13 @@ fun Route.MovieRoutes(movieDB: IRepo){
 
         }
 
-        //Rota que retorna um review
+        //Rota que retorna um movie
         get("{id}"){
             val id = call.parameters["id"]!!.toInt()
             return@get call.respondText(KtorControllerFabric(movieDB).getOneMovie(id))
         }
 
-        //Rota que posta uma review
+        //Rota que posta um movie
         post {
         }
     }
