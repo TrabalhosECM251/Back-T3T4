@@ -68,10 +68,10 @@ class UCCRUDUser (dataBase: IRepo){
         Retorno:
             User
      */
-    fun existByEmail(email: String) : Boolean{
+    fun existByEmailAndPass(email: String, pass: String) : Boolean{
         if(email != "null"){
             val user: User = this.db.existByEmail(email) as User
-            if (user.id == null){
+            if (user.id == null || user.password != pass){
                 return false
             }
             return true
