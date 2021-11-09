@@ -22,10 +22,10 @@ fun Route.reviewRoutes(reviewDB: IRepo){
             return@get call.respondText(KtorControllerFabric(reviewDB).getAllReviews(), status = HttpStatusCode.OK)
         }
 
-        //Rota que retorna um review
+        //Rota que retorna os reviews de um filme
         get("{id}"){
             val id = call.parameters["id"]!!.toInt()
-            return@get call.respondText(KtorControllerFabric(reviewDB).getOneReview(id), status = HttpStatusCode.OK)
+            return@get call.respondText(KtorControllerFabric(reviewDB).getAllReviewsByIDMovie(id), status = HttpStatusCode.OK)
         }
 
         //Rota que posta uma review

@@ -130,4 +130,32 @@ class ReviewDB : IRepo {
             return false
         }
     }
+
+    override fun getAllByIDMovie(id: Int): List<Any> {
+        val reviews = mutableListOf<Review>()
+        try {
+            val connection = MariaDB()
+            println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Reviews")
+            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Reviews WHERE idFilme = $id;")
+
+            while (resultSet!!.next()) {
+                reviews.add(
+                    Review(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("idFilme"),
+                        resultSet.getInt("idUsuario"),
+                        Classification.valueOf(resultSet.getString("classificacao").uppercase().replace(" ", "")),
+                        resultSet.getFloat("notaUsuario"),
+                        resultSet.getString("comentario")
+                    )
+                )
+            }
+            connection.close();
+        }
+        catch (exception:Exception){
+            exception.printStackTrace()
+        }
+
+        return reviews;
+    }
 }

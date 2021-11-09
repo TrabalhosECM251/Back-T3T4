@@ -12,4 +12,5 @@ interface IRepo{
     fun insertMult(lista: List<Any>): Boolean
     fun update(id: Int, newObject: Any): Boolean
     fun delete(id: Int): Boolean
+    fun getAllByIDMovie(id: Int): List<Any>
 }

@@ -16,6 +16,10 @@ class KtorControllerFabric (repository: IRepo) : ICtrl{
         return CCreateReview(repository).exec(reviewJSON)
     }
 
+    override fun getAllReviewsByIDMovie(id: Int): String {
+        return CGetAllReviewsByMovie(repository).exec(id)
+    }
+
     override fun getAllReviews(): String {
         return CGetAllReviews(repository).exec()
     }

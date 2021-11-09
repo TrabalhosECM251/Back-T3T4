@@ -3,6 +3,7 @@ package usecases
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import main.java.interfaces.IRepo
+import main.java.repositories.mariadb.ReviewDB
 import models.Filter
 import models.Review
 import usecases.errors.ErrorsCRUDReview
@@ -58,6 +59,22 @@ class UCCRUDReview (dataBase: IRepo){
     fun getByID(id: Int) : Any{
         if(id>=1){
             return this.db.getOne(id)
+        }
+        else{
+            throw ErrorsCRUDReview("Erro ao tentar adquirir review por id inválido [usecase CRUDReview.getByID]")
+        }
+    }
+
+    /*
+        Retorna reviews pelo ID de um filme
+        Parâmetro:
+            id: Int
+        Retorno:
+            Reviews
+     */
+    fun getAllByIDMovie(id: Int) : List<Any>{
+        if(id>=1){
+            return this.db.getAllByIDMovie(id)
         }
         else{
             throw ErrorsCRUDReview("Erro ao tentar adquirir review por id inválido [usecase CRUDReview.getByID]")

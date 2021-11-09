@@ -11,6 +11,7 @@ import models.Review
 interface ICtrl {
     fun getOneReview(id: Int): String
     fun createReview(reviewJSON: String)
+    fun getAllReviewsByIDMovie(id: Int): String
     fun getAllReviews(): String
 
     fun getOneMovie(id: Int): String

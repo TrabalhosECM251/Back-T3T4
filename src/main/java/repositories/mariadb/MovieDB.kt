@@ -41,15 +41,15 @@ class MovieDB : IRepo {
 
     override fun getAll(objeto: Any?): List<Any> {
         val filter : Filter = objeto as Filter;
-        val Movies = mutableListOf<Movie>()
+        val movies = mutableListOf<Movie>()
         try {
 
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Filmes")
-            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes WHERE nome LIKE '${filter.name}%' AND tema LIKE '${filter.theme}%' AND disponivel LIKE '${filter.available}%';")
+            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Filmes WHERE nome LIKE \"%${filter.name}%\" AND tema LIKE \"%${filter.theme}%\" AND disponivel LIKE \"%${filter.available}%\";")
 
             while (resultSet!!.next()) {
-                Movies.add(
+                movies.add(
                     Movie(
                         resultSet.getInt("id"),
                         resultSet.getString("nome"),
@@ -66,7 +66,7 @@ class MovieDB : IRepo {
             exception.printStackTrace()
         }
 
-        return Movies;
+        return movies;
     }
 
     override fun insertOne(objeto: Any) : Boolean {
@@ -135,5 +135,9 @@ class MovieDB : IRepo {
             return false
         }
 
+    }
+
+    override fun getAllByIDMovie(id: Int): List<Any> {
+        TODO("DOES NOT IMPLEMENT")
     }
 }
