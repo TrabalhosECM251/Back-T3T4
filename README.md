@@ -72,6 +72,7 @@ JDK: openjdk-16 versão 16.0.2
         * `rating` : rating do filme, dado pelo usuário
         * `comment` : comentário da review
           * exemplo: idmovie=3&iduser=1&classification=bom&rating=8.9&comment=comentario
+          ![img.png](img.png)
 
 #### Usuarios
 * POST "/user/e" : Verifica se o usuario existe no Banco de Dados
@@ -81,3 +82,4 @@ JDK: openjdk-16 versão 16.0.2
       * `e` : email
       * `p` : senha
         * exemplo: e=caaroolinag@gmail.com&p=Carol123  (Exemplo resulta em usuário válido)
+        ![img_1.png](img_1.png)
