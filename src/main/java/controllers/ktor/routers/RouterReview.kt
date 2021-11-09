@@ -8,6 +8,7 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import main.java.interfaces.IRepo
 import models.Review
+import java.util.*
 
 /*
 	Classe responsável pelo manejamento de rotas
@@ -30,9 +31,19 @@ fun Route.reviewRoutes(reviewDB: IRepo){
 
         //Rota que posta uma review
         post {
-            val review = call.receive<String>()
-            println("TEXTO REVIEW "+ review)
-            KtorControllerFabric(reviewDB).createReview(review)
+
+            val formParameters = call.receiveParameters()
+            val idMovie = formParameters["idMovie"]!!.toInt()
+            val idUser = formParameters["idUser"]!!.toInt()
+            val classification = formParameters["classification"].toString()
+            val rating = formParameters["rating"]!!.toFloat()
+            val comment = formParameters["comment"].toString()
+
+            val reviewJSON = """{"idMovie":$idMovie,"idUser":$idUser,
+                                |"classification":"${classification.uppercase()}",
+                                |"rating":$rating,
+                                |"comment":"$comment"}""".trimMargin()
+            KtorControllerFabric(reviewDB).createReview(reviewJSON)
             call.respondText("Review Criada", status = HttpStatusCode.Created)
         }
     }
