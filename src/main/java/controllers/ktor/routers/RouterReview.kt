@@ -23,9 +23,9 @@ fun Route.reviewRoutes(reviewDB: IRepo){
         }
 
         //Rota que retorna os reviews de um filme
-        get("{id}"){
-            val id = call.parameters["id"]!!.toInt()
-            return@get call.respondText(KtorControllerFabric(reviewDB).getAllReviewsByIDMovie(id), status = HttpStatusCode.OK)
+        get("{idFilme}"){
+            val idFilme = call.parameters["idFilme"]!!.toInt()
+            return@get call.respondText(KtorControllerFabric(reviewDB).getAllReviewsByIDMovie(idFilme), status = HttpStatusCode.OK)
         }
 
         //Rota que posta uma review
