@@ -30,8 +30,7 @@ class UCCRUDUser (dataBase: IRepo){
         Parâmetros:
             userJSON: String = """{"name": String,
                                "email": String,
-                               "password": String,
-                               "rating": Float}"""
+                               "password": String}"""
         Retorno:
             Boolean
      */
@@ -56,6 +55,26 @@ class UCCRUDUser (dataBase: IRepo){
     fun getByID(id: Int) : Any{
         if(id>=1){
             return this.db.getOne(id)
+        }
+        else{
+            throw ErrorsCRUDUser("Erro ao tentar adquirir file por id inválido [usecase CRUDUser.getByID]")
+        }
+    }
+
+    /*
+        Retorna um usuário pelo email
+        Parâmetro:
+            id: Int
+        Retorno:
+            User
+     */
+    fun existByEmailAndPass(email: String, pass: String) : Boolean{
+        if(email != "null"){
+            val user: User = this.db.existByEmail(email) as User
+            if (user.id == null || user.password != pass){
+                return false
+            }
+            return true
         }
         else{
             throw ErrorsCRUDUser("Erro ao tentar adquirir file por id inválido [usecase CRUDUser.getByID]")

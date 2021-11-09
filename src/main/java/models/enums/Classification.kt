@@ -7,5 +7,6 @@ enum class Classification(val classification: String) {
     LEGAL("Legal"),
     BOM("Bom"),
     GOSTEI("Gostei"),
-    MARAVILHOSO("Maravilhoso")
+    MARAVILHOSO("Maravilhoso"),
+    MUITOBOM("Muito Bom")
 }

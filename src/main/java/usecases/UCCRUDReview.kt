@@ -3,6 +3,8 @@ package usecases
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import main.java.interfaces.IRepo
+import main.java.repositories.mariadb.ReviewDB
+import models.Filter
 import models.Review
 import usecases.errors.ErrorsCRUDReview
 /*
@@ -28,7 +30,7 @@ class UCCRUDReview (dataBase: IRepo){
     /*
         Adiciona ao banco de dados um review a partir de um Map de review
         Parâmetros:
-            reviewJSON: String = """{"idFilm": Int,
+            reviewJSON: String = """{"idMovie": Int,
                                      "idUser": Int,
                                      "classification": Classification,
                                      "rating": Float,
@@ -59,7 +61,23 @@ class UCCRUDReview (dataBase: IRepo){
             return this.db.getOne(id)
         }
         else{
-            throw ErrorsCRUDReview("Erro ao tentar adquirir file por id inválido [usecase CRUDReview.getByID]")
+            throw ErrorsCRUDReview("Erro ao tentar adquirir review por id inválido [usecase CRUDReview.getByID]")
+        }
+    }
+
+    /*
+        Retorna reviews pelo ID de um filme
+        Parâmetro:
+            id: Int
+        Retorno:
+            Reviews
+     */
+    fun getAllByIDMovie(id: Int) : List<Any>{
+        if(id>=1){
+            return this.db.getAllByIDMovie(id)
+        }
+        else{
+            throw ErrorsCRUDReview("Erro ao tentar adquirir review por id inválido [usecase CRUDReview.getByID]")
         }
     }
 
@@ -96,4 +114,15 @@ class UCCRUDReview (dataBase: IRepo){
         }
     }
 
+    /*
+        Retorna todos os reviews
+     */
+    fun getAll() : List<Any>{
+        try {
+            return this.db.getAll(null)
+        }
+        catch (e: Exception){
+            throw ErrorsCRUDReview("Erro ao tentar adquirir reviews [usecase CRUDReview.getAll]")
+        }
+    }
 }

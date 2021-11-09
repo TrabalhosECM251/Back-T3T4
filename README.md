@@ -55,3 +55,35 @@ Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma AP
 * Interfaces: I maiúsculo seguido do nome em UpperCamelCase. ex: IExemplo.kt
 * Usecase: UC maiúsculo seguido do nome em UpperCamelCase. ex: UCExemplo.kt
 * Controlador: C maiúsculo segudo do nome em UpperCamelCase. ex CExemplo.kt
+
+### Rotas (Atualizado em 09/11 15:44)
+#### Raiz
+* http://localhost:8080/
+#### Filmes
+* GET "/movies?n=&t=&a=" : retorna lista com todos os filmes do Banco de Dados dado um filtro. (n = nome, t = tema, a = disponivel)
+* GET "/movies/{id}" : retorna um filme do Banco de Dados dado seu id
+
+#### Reviews
+* GET "/reviews" : retorna lista com todas as reviews do Banco de Dados
+* GET "/reviews/{idFilme}" : retorna do Banco de Dados uma lista com reviews de um filme, a partir do id do filme
+* POST "/reviews" : Adiciona uma review ao Banco de Dados
+  * Body:
+    * type: `x-www-form-urlencoded` ou `multipart/form-data`
+    * parameters:
+        * `idmovie` : id do filme ao qual o review se refere
+        * `iduser` : id do usuario criador da review
+        * `classification` : classificação do filme, dado pelo usuário
+        * `rating` : rating do filme, dado pelo usuário
+        * `comment` : comentário da review
+          * exemplo: idmovie=3&iduser=1&classification=bom&rating=8.9&comment=comentario
+          ![img.png](img.png)
+
+#### Usuarios
+* POST "/user/e" : Verifica se o usuario existe no Banco de Dados
+  * Body:
+    * type: `x-www-form-urlencoded` ou `multipart/form-data`
+    * parameters:
+      * `e` : email
+      * `p` : senha
+        * exemplo: e=caaroolinag@gmail.com&p=Carol123  (Exemplo resulta em usuário válido)
+        ![img_1.png](img_1.png)
