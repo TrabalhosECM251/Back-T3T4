@@ -1,7 +1,7 @@
 package repositories.mariadb
 
 import java.sql.*
-//import config.MariaDB
+import config.MariaDB
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -13,17 +13,11 @@ class MariaDB {
     var connection : Connection? = null
     var statement : Statement? = null
     var result : ResultSet? = null
-    /*
-    val user = MariaDB.user
-    val password = MariaDB.password
-    val host = MariaDB.host
-    val port = MariaDB.port
-     */
 
-    private val user = "admin"
-    private val password = "admin"
-    private val host = "192.168.56.101"
-    private val port = "3306"
+    private val user = MariaDB.user
+    private val password = MariaDB.password
+    private val host = MariaDB.host
+    private val port = MariaDB.port
 
 
 
