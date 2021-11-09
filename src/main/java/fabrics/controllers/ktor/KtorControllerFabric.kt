@@ -35,4 +35,8 @@ class KtorControllerFabric (repository: IRepo) : ICtrl{
     override fun getAllMovies(filterJSON: String): String {
         return CGetAllMovies(repository).exec(filterJSON)
     }
+
+    override fun existByEmail(email: String): String {
+        return CUserExistByEmail(repository).exec(email)
+    }
 }

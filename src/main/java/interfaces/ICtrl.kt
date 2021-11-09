@@ -18,4 +18,6 @@ interface ICtrl {
     fun createMovie(movieJSON: String)
     fun getAllMovies(filterJSON: String): String
 
+    fun existByEmail(email: String): String
+
 }

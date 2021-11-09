@@ -16,15 +16,25 @@ fun Route.userRoutes(userDB: IRepo){
 
     route("/user") {
 
-        //Rota que retorna todas as reviews
+        //Rota que retorna todos os usuarios
         get{
         }
 
-        //Rota que retorna um review
+        //Rota que retorna um usuario pelo seu id
         get("{id}"){
         }
 
-        //Rota que posta uma review
+        //Rota que retorna se um usuario existe
+        get("/e/{email}"){
+            val email = call.parameters["email"]!!.toString()
+            val exist = KtorControllerFabric(userDB).existByEmail(email)
+            if(exist == "false"){
+                return@get call.respondText(exist, status = HttpStatusCode.NotFound)
+            }
+            return@get call.respondText(exist, status = HttpStatusCode.OK)
+        }
+
+        //Rota que cria um usuario no banco
         post {
         }
     }
