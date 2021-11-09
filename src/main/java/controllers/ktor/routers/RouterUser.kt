@@ -16,14 +16,6 @@ fun Route.userRoutes(userDB: IRepo){
 
     route("/user") {
 
-        //Rota que retorna todos os usuarios
-        get{
-        }
-
-        //Rota que retorna um usuario pelo seu id
-        get("{id}"){
-        }
-
         //Rota que retorna se um usuario existe
         post("/e"){
             val formParameters = call.receiveParameters()
@@ -36,10 +28,6 @@ fun Route.userRoutes(userDB: IRepo){
             else {
                 call.respondText(exist, status = HttpStatusCode.OK)
             }
-        }
-
-        //Rota que cria um usuario no banco
-        post {
         }
     }
 }
