@@ -37,10 +37,6 @@ fun Route.MovieRoutes(movieDB: IRepo){
             val id = call.parameters["id"]!!.toInt()
             return@get call.respondText(KtorControllerFabric(movieDB).getOneMovie(id))
         }
-
-        //Rota que posta um movie
-        post {
-        }
     }
 }
 
