@@ -19,9 +19,9 @@ fun Route.MovieRoutes(movieDB: IRepo){
 
         //Rota que retorna todas os movies
         get{
-            val name = call.request.queryParameters["name"]!!
-            val theme = call.request.queryParameters["theme"]!!
-            val available = call.request.queryParameters["available"]!!
+            val name = call.request.queryParameters["n"]!!
+            val theme = call.request.queryParameters["t"]!!
+            val available = call.request.queryParameters["a"]!!
 
             val filter = Filter(name,theme,available)
 

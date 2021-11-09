@@ -56,7 +56,7 @@ JDK: openjdk-16 versão 16.0.2
 #### Raiz
 * http://localhost:8080/
 #### Filmes
-* GET "/movies" : retorna lista com todos os filmes do Banco de Dados
+* GET "/movies?n=&t=&a=" : retorna lista com todos os filmes do Banco de Dados dado um filtro. (n = nome, t = tema, a = disponivel)
 * GET "/movies/{id}" : retorna um filme do Banco de Dados dado seu id
 
 #### Reviews
