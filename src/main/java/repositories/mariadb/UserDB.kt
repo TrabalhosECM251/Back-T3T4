@@ -1,9 +1,7 @@
 package main.java.repositories.mariadb
 
 import main.java.interfaces.IRepo
-import models.Review
 import models.User
-import models.enums.Classification
 import repositories.mariadb.MariaDB
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,9 +15,9 @@ class UserDB : IRepo {
         var user : User? = null
 
         try {
-            val connection = MariaDB();
+            val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Users")
-            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Usuarios WHERE id = ${id};");
+            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Usuarios WHERE id = ${id};")
 
             while (resultSet!!.next()){
                 user = User(
@@ -29,7 +27,7 @@ class UserDB : IRepo {
                     resultSet.getString("senha")
                 )
             }
-            connection.close();
+            connection.close()
         }
         catch (exception:Exception){
             exception.printStackTrace()
@@ -55,33 +53,33 @@ class UserDB : IRepo {
                     )
                 )
             }
-            connection.close();
+            connection.close()
         }
         catch (exception:Exception){
             exception.printStackTrace()
         }
 
-        return users;
+        return users
     }
 
     override fun insertOne(objeto: Any) : Boolean {
-        val user : User = objeto as User;
+        val user : User = objeto as User
 
         try {
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Users")
             val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Usuarios (nome, email, senha) VALUES (\"${user.name}\", \"${user.email}\", \"${user.password}\");")
-            connection.close();
-            return true
+            connection.close()
         }
         catch (exception:Exception){
             exception.printStackTrace()
             return false
         }
+        return true
     }
 
     override fun insertMult(lista: List<Any>) : Boolean {
-        val users = lista as List<User>
+        val users : List<User> = lista as List<User>
 
         try {
             val connection = MariaDB()
@@ -89,13 +87,13 @@ class UserDB : IRepo {
             for (user : User in users){
                 val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Usuarios (nome, email, senha) VALUES (\"${user.name}\", \"${user.email}\", \"${user.password}\");")
             }
-            connection.close();
-            return true
+            connection.close()
         }
         catch (exception:Exception){
             exception.printStackTrace()
             return false
         }
+        return true
     }
 
     override fun update(id: Int, newObject: Any) : Boolean {
@@ -105,12 +103,12 @@ class UserDB : IRepo {
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer UPDATE na tabela Users")
             val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Usuarios SET name = \"${user.name}\", email = \"${user.email}\", senha = \"${user.password}\" WHERE id = ${id};")
             connection.close()
-            return true
         }
         catch (exception:Exception){
             exception.printStackTrace()
             return false
         }
+        return true
     }
 
     override fun delete(id: Int) : Boolean{
@@ -120,12 +118,12 @@ class UserDB : IRepo {
             val resultSet = connection.executeQuery("DELETE FROM aplicacaoDB.Users WHERE id = ${id};")
 
             connection.close()
-            return true
         }
         catch (exception:Exception){
             exception.printStackTrace()
             return false
         }
+        return true
     }
 
     override fun getAllByIDMovie(id: Int): List<Any> {
