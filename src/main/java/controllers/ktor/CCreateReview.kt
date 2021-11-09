@@ -13,9 +13,7 @@ class CCreateReview (reviewDB: IRepo){
 
         fun exec(reviewJSON: String){
             try{
-                println("Iniciando criacao do review")
                 useCase.createByJson(reviewJSON)
-                println("Teoricamente criou o review")
             }
             catch(e: Exception){
             }
