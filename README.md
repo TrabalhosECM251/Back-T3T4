@@ -2,8 +2,11 @@
 
 JDK: openjdk-16 versão 16.0.2
 
+# Projeto
+Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma API que será utilizada na criação de um site de review para filmes
+
 # Como iniciar
-1. Baixar VM do DB modelo em: 
+1. Baixar VM do DB modelo em: https://drive.google.com/file/d/1CeS3kiVsx_JEfJUNd6kVmlfN6rMJTlDx/view?usp=sharing
 2. Importar a VM no VirtualBox
 3. Iniciar a VM do banco de dados
 4. Criar arquivo MariaDB.kt em src/main/java/config com o template de MariaDB.kt.template para conexão com o Banco de Dados
@@ -32,7 +35,8 @@ JDK: openjdk-16 versão 16.0.2
                 |-usecases/ : Onde são definidas as regras de negócio
                 |-Init.kt : Configurações para inicialização da aplicação
                 |-main.kt : Inicializa a aplicação
-
+### Banco de dados
+![image](https://user-images.githubusercontent.com/70296502/140964760-e4c882f8-28fe-421a-a8d2-3cb5209f19f0.png)
 ### Ordem de desenvolvimento
 #### ANTES: Criar arquivo MariaDB.kt em src/main/java/config com o template de MariaDB.kt.template para conexão com o Banco de Dados
 1. Criar método na interface de repositório (IRepo.kt)
