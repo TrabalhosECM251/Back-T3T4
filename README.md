@@ -14,9 +14,10 @@ Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma AP
 ```
     const val user = "admin"    
     const val password = "admin"    
-    const val host = "{IP fornecido pela VM}"    
+    const val host = "{IP fornecido pela VM (print de exemplo abaixo)}"    
     const val port = "3306"
 ```
+![image](https://user-images.githubusercontent.com/70296502/141036745-4aed717c-30f0-4628-a430-70330c95126d.png)
     
 6. Iniciar a aplicação pelo arquivo main.kt
 
