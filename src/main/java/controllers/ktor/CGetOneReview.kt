@@ -16,7 +16,8 @@ class CGetOneReview(reviewDB: IRepo ) {
         try{
             var review = useCase.getByID(id)
             val mapper = jacksonObjectMapper()
-            return mapper.writeValueAsString(review)
+            val results = mapper.writeValueAsString(review)
+            return """{"results": $results}"""
         }
         catch(e: Exception){
 

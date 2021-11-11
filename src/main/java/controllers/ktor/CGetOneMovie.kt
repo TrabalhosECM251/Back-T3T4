@@ -16,7 +16,8 @@ class CGetOneMovie (movieDB: IRepo) {
         try{
             var movie = useCase.getByID(id)
             val mapper = jacksonObjectMapper()
-            return mapper.writeValueAsString(movie)
+            val results = mapper.writeValueAsString(movie)
+            return """{"results": $results}"""
         }
         catch(e: Exception){
 

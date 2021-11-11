@@ -44,7 +44,7 @@ fun Route.reviewRoutes(reviewDB: IRepo){
                                 |"rating":$rating,
                                 |"comment":"$comment"}""".trimMargin()
             KtorControllerFabric(reviewDB).createReview(reviewJSON)
-            call.respondText("Review Criada", status = HttpStatusCode.Created)
+            call.respondText("""{"results": "Review Criada"}""", status = HttpStatusCode.Created)
         }
     }
 }

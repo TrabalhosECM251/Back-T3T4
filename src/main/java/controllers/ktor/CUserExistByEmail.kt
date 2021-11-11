@@ -14,9 +14,10 @@ class CUserExistByEmail(userDB: IRepo) {
 
     fun exec(email: String, pass: String): String{
         try{
-            var exists = useCase.existByEmailAndPass(email, pass)
+            val exists = useCase.existByEmailAndPass(email, pass)
             val mapper = jacksonObjectMapper()
-            return mapper.writeValueAsString(exists)
+            val results = mapper.writeValueAsString(exists)
+            return """{"results": $results}"""
         }
         catch(e: Exception){
 
