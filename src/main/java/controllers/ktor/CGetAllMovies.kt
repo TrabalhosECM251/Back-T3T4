@@ -17,7 +17,8 @@ class CGetAllMovies  (movieDB: IRepo) {
              */
             var movies = useCase.getAll(filterJSON)
             val mapper = jacksonObjectMapper()
-            return mapper.writeValueAsString(movies)
+            val results = mapper.writeValueAsString(movies)
+            return """{"results": $results}"""
         }
         catch(e: Exception){
 
