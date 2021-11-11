@@ -87,4 +87,4 @@ Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma AP
       * `e` : email
       * `p` : senha
         * exemplo: e=caaroolinag@gmail.com&p=Carol123  (Exemplo resulta em usuário válido)
-        ![img_1.png](img_1.png)
+        ![img_2.png](img_2.png)
