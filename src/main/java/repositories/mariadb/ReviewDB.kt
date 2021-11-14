@@ -69,7 +69,7 @@ class ReviewDB : IRepo {
         try {
             val connection = MariaDB();
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Reviews")
-            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews ( idFilme, nmUsuario, classificacao, notaUsuario, comentario) VALUES ( ${review.idMovie}, \"${review.nmUser}\", ${review.rating}, \"${review.comment}\");")
+            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews ( idFilme, nmUsuario, notaUsuario, comentario) VALUES ( ${review.idMovie}, \"${review.nmUser}\", ${review.rating}, \"${review.comment}\");")
             connection.close();
             return true
         }
@@ -86,7 +86,7 @@ class ReviewDB : IRepo {
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Reviews")
             for (review : Review in reviews){
-                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews (idFilme, nmUsuario, classificacao, notaUsuario, comentario) VALUES (${review.idMovie}, \"${review.nmUser}\", ${review.rating}, \"${review.comment}\");")
+                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews (idFilme, nmUsuario, notaUsuario, comentario) VALUES (${review.idMovie}, \"${review.nmUser}\", ${review.rating}, \"${review.comment}\");")
             }
             connection.close();
             return true
