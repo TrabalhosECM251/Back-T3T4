@@ -34,12 +34,12 @@ fun Route.reviewRoutes(reviewDB: IRepo){
 
             val formParameters = call.receiveParameters()
             val idMovie = formParameters["idmovie"]!!.toInt()
-            val nmUser = formParameters["nmuser"]!!.toString()
+            val nmUser = formParameters["nmuser"].toString()
             val rating = formParameters["rating"]!!.toFloat()
             val comment = formParameters["comment"].toString()
 
             val reviewJSON = """{"idMovie":$idMovie,
-                                |"nmUser":$nmUser,
+                                |"nmUser":"$nmUser",
                                 |"rating":$rating,
                                 |"comment":"$comment"}""".trimMargin()
             KtorControllerFabric(reviewDB).createReview(reviewJSON)
