@@ -72,8 +72,7 @@ Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma AP
     * type: `x-www-form-urlencoded` ou `multipart/form-data`
     * parameters:
         * `idmovie` : id do filme ao qual o review se refere
-        * `nmuser` : id do usuario criador da review
-        * `classification` : classificação do filme, dado pelo usuário
+        * `nmuser` : nome do usuario criador da review
         * `rating` : rating do filme, dado pelo usuário
         * `comment` : comentário da review
           * exemplo: idmovie=3&iduser=1&classification=bom&rating=8.9&comment=comentario
