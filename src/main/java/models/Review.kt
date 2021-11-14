@@ -1,7 +1,5 @@
 package models
 
-import models.enums.Classification
-
 /*
     Model de review
     Atributos:
@@ -13,5 +11,5 @@ import models.enums.Classification
         comment: string - Comentário da avaliação
  */
 
-data class Review(val id: Int? = null, val idMovie: Int, val idUser: Int, val classification: Classification, val rating: Float,
+data class Review(val id: Int? = null, val idMovie: Int, val nmUser: String, val rating: Float,
                   val comment: String)

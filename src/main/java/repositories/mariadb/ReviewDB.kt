@@ -2,7 +2,6 @@ package main.java.repositories.mariadb
 
 import main.java.interfaces.IRepo
 import models.Review
-import models.enums.Classification
 import repositories.mariadb.MariaDB
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,8 +23,7 @@ class ReviewDB : IRepo {
                 review = Review(
                     resultSet.getInt("id"),
                     resultSet.getInt("idFilme"),
-                    resultSet.getInt("idUsuario"),
-                    Classification.valueOf(resultSet.getString("classificacao").uppercase().replace(" ", "")),
+                    resultSet.getString("nmUsuario"),
                     resultSet.getFloat("notaUsuario"),
                     resultSet.getString("comentario")
                 )
@@ -50,8 +48,7 @@ class ReviewDB : IRepo {
                     Review(
                         resultSet.getInt("id"),
                         resultSet.getInt("idFilme"),
-                        resultSet.getInt("idUsuario"),
-                        Classification.valueOf(resultSet.getString("classificacao").uppercase().replace(" ", "")),
+                        resultSet.getString("nmUsuario"),
                         resultSet.getFloat("notaUsuario"),
                         resultSet.getString("comentario")
                     )
@@ -72,7 +69,7 @@ class ReviewDB : IRepo {
         try {
             val connection = MariaDB();
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Reviews")
-            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews ( idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES ( ${review.idMovie}, ${review.idUser}, \"${review.classification.toString()}\", ${review.rating}, \"${review.comment}\");")
+            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews ( idFilme, nmUsuario, notaUsuario, comentario) VALUES ( ${review.idMovie}, \"${review.nmUser}\", ${review.rating}, \"${review.comment}\");")
             connection.close();
             return true
         }
@@ -89,7 +86,7 @@ class ReviewDB : IRepo {
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Reviews")
             for (review : Review in reviews){
-                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews (idFilme, idUsuario, classificacao, notaUsuario, comentario) VALUES (${review.idMovie}, ${review.idUser}, \"${review.classification}\", ${review.rating}, \"${review.comment}\");")
+                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Reviews (idFilme, nmUsuario, notaUsuario, comentario) VALUES (${review.idMovie}, \"${review.nmUser}\", ${review.rating}, \"${review.comment}\");")
             }
             connection.close();
             return true
@@ -106,7 +103,7 @@ class ReviewDB : IRepo {
         try{
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer UPDATE na tabela Reviews")
-            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Reviews SET idFilme = ${review.idMovie}, idUsuario = ${review.idUser}, classificacao = \"${review.classification}\", notaUsuario = ${review.rating}, comentario = \"${review.comment}\" WHERE id = ${id};")
+            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Reviews SET idFilme = ${review.idMovie}, nmUsuario = ${review.nmUser}, notaUsuario = ${review.rating}, comentario = \"${review.comment}\" WHERE id = ${id};")
             connection.close()
             return true
         }
@@ -143,8 +140,7 @@ class ReviewDB : IRepo {
                     Review(
                         resultSet.getInt("id"),
                         resultSet.getInt("idFilme"),
-                        resultSet.getInt("idUsuario"),
-                        Classification.valueOf(resultSet.getString("classificacao").uppercase().replace(" ", "")),
+                        resultSet.getString("nmUsuario"),
                         resultSet.getFloat("notaUsuario"),
                         resultSet.getString("comentario")
                     )
@@ -159,7 +155,7 @@ class ReviewDB : IRepo {
         return reviews;
     }
 
-    override fun existByEmail(email: String): Any {
+    override fun existByUser(user: String): Any {
         TODO("Not yet implemented")
     }
 }

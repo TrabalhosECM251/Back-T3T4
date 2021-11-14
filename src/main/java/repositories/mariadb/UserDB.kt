@@ -23,7 +23,7 @@ class UserDB : IRepo {
                 user = User(
                     resultSet.getInt("id"),
                     resultSet.getString("nome"),
-                    resultSet.getString("email"),
+                    resultSet.getString("usuario"),
                     resultSet.getString("senha")
                 )
             }
@@ -48,7 +48,7 @@ class UserDB : IRepo {
                     User(
                         resultSet.getInt("id"),
                         resultSet.getString("nome"),
-                        resultSet.getString("email"),
+                        resultSet.getString("usuario"),
                         resultSet.getString("senha")
                     )
                 )
@@ -68,7 +68,7 @@ class UserDB : IRepo {
         try {
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Users")
-            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Usuarios (nome, email, senha) VALUES (\"${user.name}\", \"${user.email}\", \"${user.password}\");")
+            val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Usuarios (nome, usuario, senha) VALUES (\"${user.name}\", \"${user.user}\", \"${user.password}\");")
             connection.close()
         }
         catch (exception:Exception){
@@ -85,7 +85,7 @@ class UserDB : IRepo {
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer INSERT na tabela Users")
             for (user : User in users){
-                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Usuarios (nome, email, senha) VALUES (\"${user.name}\", \"${user.email}\", \"${user.password}\");")
+                val resultSet = connection.executeQuery("INSERT INTO aplicacaoDB.Usuarios (nome, usuario, senha) VALUES (\"${user.name}\", \"${user.user}\", \"${user.password}\");")
             }
             connection.close()
         }
@@ -101,7 +101,7 @@ class UserDB : IRepo {
         try{
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer UPDATE na tabela Users")
-            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Usuarios SET name = \"${user.name}\", email = \"${user.email}\", senha = \"${user.password}\" WHERE id = ${id};")
+            val resultSet = connection.executeQuery("UPDATE aplicacaoDB.Usuarios SET name = \"${user.name}\", email = \"${user.user}\", senha = \"${user.password}\" WHERE id = ${id};")
             connection.close()
         }
         catch (exception:Exception){
@@ -130,19 +130,19 @@ class UserDB : IRepo {
         TODO("DOES NOT IMPLEMENT")
     }
 
-    override fun existByEmail(email: String): Any {
-        var user : User = User(name = "null", email = "null", password = "null")
+    override fun existByUser(user: String): Any {
+        var user : User = User(name = "null", user = "null", password = "null")
 
         try {
             val connection = MariaDB()
             println(SimpleDateFormat.getDateTimeInstance().format(Calendar.getInstance().time) + " LOG: Tentando fazer SELECT na tabela Users")
-            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Usuarios WHERE email = \"$email\";")
+            val resultSet = connection.executeQuery("SELECT * FROM aplicacaoDB.Usuarios WHERE usuario = \"$user\";")
 
             while (resultSet!!.next()){
                 user = User(
                     resultSet.getInt("id"),
                     resultSet.getString("nome"),
-                    resultSet.getString("email"),
+                    resultSet.getString("usuario"),
                     resultSet.getString("senha")
                 )
             }

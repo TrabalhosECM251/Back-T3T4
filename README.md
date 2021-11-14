@@ -37,7 +37,7 @@ Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma AP
                 |-Init.kt : Configurações para inicialização da aplicação
                 |-main.kt : Inicializa a aplicação
 ### Banco de dados
-![image](https://user-images.githubusercontent.com/70296502/140964760-e4c882f8-28fe-421a-a8d2-3cb5209f19f0.png)
+![img_3.png](img_3.png)
 ### Ordem de desenvolvimento
 #### ANTES: Criar arquivo MariaDB.kt em src/main/java/config com o template de MariaDB.kt.template para conexão com o Banco de Dados
 1. Criar método na interface de repositório (IRepo.kt)
@@ -72,8 +72,7 @@ Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma AP
     * type: `x-www-form-urlencoded` ou `multipart/form-data`
     * parameters:
         * `idmovie` : id do filme ao qual o review se refere
-        * `iduser` : id do usuario criador da review
-        * `classification` : classificação do filme, dado pelo usuário
+        * `nmuser` : nome do usuario criador da review
         * `rating` : rating do filme, dado pelo usuário
         * `comment` : comentário da review
           * exemplo: idmovie=3&iduser=1&classification=bom&rating=8.9&comment=comentario
@@ -84,7 +83,7 @@ Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma AP
   * Body:
     * type: `x-www-form-urlencoded` ou `multipart/form-data`
     * parameters:
-      * `e` : email
+      * `u` : usuario
       * `p` : senha
-        * exemplo: e=caaroolinag@gmail.com&p=Carol123  (Exemplo resulta em usuário válido)
+        * exemplo: e=caaroolinag&p=Carol123  (Exemplo resulta em usuário válido)
         ![img_2.png](img_2.png)

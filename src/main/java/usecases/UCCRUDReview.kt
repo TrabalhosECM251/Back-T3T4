@@ -31,7 +31,7 @@ class UCCRUDReview (dataBase: IRepo){
         Adiciona ao banco de dados um review a partir de um Map de review
         Parâmetros:
             reviewJSON: String = """{"idMovie": Int,
-                                     "idUser": Int,
+                                     "nmUser": Int,
                                      "classification": Classification,
                                      "rating": Float,
                                      "comment": String}"""

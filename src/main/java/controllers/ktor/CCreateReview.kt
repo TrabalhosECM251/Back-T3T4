@@ -2,7 +2,6 @@ package controllers.ktor
 
 
 import main.java.interfaces.IRepo
-import models.Review
 import usecases.UCCRUDReview
 
 class CCreateReview (reviewDB: IRepo){
