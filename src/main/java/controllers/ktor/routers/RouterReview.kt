@@ -34,7 +34,7 @@ fun Route.reviewRoutes(reviewDB: IRepo){
 
             val formParameters = call.receiveParameters()
             val idMovie = formParameters["idmovie"]!!.toInt()
-            val nmUser = formParameters["nmuser"]!!.toInt()
+            val nmUser = formParameters["nmuser"]!!.toString()
             val rating = formParameters["rating"]!!.toFloat()
             val comment = formParameters["comment"].toString()
 
