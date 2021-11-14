@@ -141,7 +141,7 @@ class MovieDB : IRepo {
         TODO("DOES NOT IMPLEMENT")
     }
 
-    override fun existByEmail(email: String): Any {
+    override fun existByUser(user: String): Any {
         TODO("Not yet implemented")
     }
 }

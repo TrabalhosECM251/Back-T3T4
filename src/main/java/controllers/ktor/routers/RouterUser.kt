@@ -19,7 +19,7 @@ fun Route.userRoutes(userDB: IRepo){
         //Rota que retorna se um usuario existe
         post("/e"){
             val formParameters = call.receiveParameters()
-            val email = formParameters["e"].toString()
+            val email = formParameters["u"].toString()
             val pass = formParameters["p"].toString()
             val exist = KtorControllerFabric(userDB).existByEmailAndPass(email, pass)
             if(exist == "false"){

@@ -29,7 +29,7 @@ class UCCRUDUser (dataBase: IRepo){
         Adiciona ao banco de dados um usuário a partir de um Map de usuário
         Parâmetros:
             userJSON: String = """{"name": String,
-                               "email": String,
+                               "user": String,
                                "password": String}"""
         Retorno:
             Boolean
@@ -68,9 +68,9 @@ class UCCRUDUser (dataBase: IRepo){
         Retorno:
             User
      */
-    fun existByEmailAndPass(email: String, pass: String) : Boolean{
-        if(email != "null"){
-            val user: User = this.db.existByEmail(email) as User
+    fun existByEmailAndPass(user: String, pass: String) : Boolean{
+        if(user != "null"){
+            val user: User = this.db.existByUser(user) as User
             if (user.id == null || user.password != pass){
                 return false
             }
