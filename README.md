@@ -75,7 +75,7 @@ Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma AP
         * `nmuser` : nome do usuario criador da review
         * `rating` : rating do filme, dado pelo usuário
         * `comment` : comentário da review
-          * exemplo: idmovie=3&iduser=1&classification=bom&rating=8.9&comment=comentario
+          * exemplo: idmovie=99&nmuser=marilisegutierrez50&rating=7&comment=Filme%20Bom!!!
           ![image](https://user-images.githubusercontent.com/70296502/141704408-39a6e3c2-fc1c-4eaf-8586-c010ddb06d75.png)
 
 #### Usuarios
