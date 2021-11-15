@@ -76,7 +76,7 @@ Trata-se do uso do framework Ktor para linguagem Kotlin para criação de uma AP
         * `rating` : rating do filme, dado pelo usuário
         * `comment` : comentário da review
           * exemplo: idmovie=3&iduser=1&classification=bom&rating=8.9&comment=comentario
-          ![img.png](img.png)
+          ![image](https://user-images.githubusercontent.com/70296502/141704408-39a6e3c2-fc1c-4eaf-8586-c010ddb06d75.png)
 
 #### Usuarios
 * POST "/user/e" : Verifica se o usuario existe no Banco de Dados
